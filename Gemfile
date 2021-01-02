@@ -12,3 +12,7 @@ group :development do
   gem "rake", "~> 13.0", ">= 13.0.3"
   gem "tux", "~> 0.3.0"
 end
+
+group :test do
+  gem "rspec", "~> 3.10"
+end
