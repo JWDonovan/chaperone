@@ -1,48 +1,50 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  get "/login" do
-    redirect "/users/#{ current_user.id }" if logged_in?
+  get '/login' do
+    redirect "/users/#{current_user.id}" if logged_in?
     erb :"users/login"
   end
 
-  post "/login" do
+  post '/login' do
     @user = User.find_by(email: params[:email])
 
-    if @user && @user.authenticate(params[:password])
+    if @user&.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect :"/users/#{ @user.id }"
+      redirect :"/users/#{@user.id}"
     else
       redirect :"/login"
     end
   end
 
-  get "/signup" do
-    redirect "/users/#{ current_user.id }" if logged_in?
+  get '/signup' do
+    redirect "/users/#{current_user.id}" if logged_in?
     erb :"users/new"
   end
 
-  post "/signup" do
+  post '/signup' do
     user = User.new(params)
-    
+
     if user.save
       session[:user_id] = user.id
-      redirect "/users/#{ user.id }"
+      redirect "/users/#{user.id}"
     else
-      redirect "/signup"
+      redirect '/signup'
     end
   end
 
-  get "/users/:id" do
+  get '/users/:id' do
     @user = User.find_by(id: params[:id])
-    
+
     if @user
       erb :"users/show"
     else
-      "404: User not found"
+      '404: User not found'
     end
   end
 
-  get "/users/:id/edit" do
-    redirect "/login" unless logged_in?
+  get '/users/:id/edit' do
+    redirect '/login' unless logged_in?
 
     @user = User.find_by(id: params[:id])
 
@@ -50,34 +52,33 @@ class UsersController < ApplicationController
       if @user.id == current_user.id
         erb :"users/edit"
       else
-        "You cannot edit other users"
+        'You cannot edit other users'
       end
     else
-      "404: User not found"
+      '404: User not found'
     end
   end
 
-  patch "/users/:id" do
+  patch '/users/:id' do
     @user = User.find_by(id: params[:id])
 
-    if @user
-      @user.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
-    end
+    @user&.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email],
+                  password: params[:password])
 
     if @user.save
       erb :"users/show"
     else
-      redirect "/users/#{ @user.id }/edit"
+      redirect "/users/#{@user.id}/edit"
     end
   end
 
-  get "/logout" do
+  get '/logout' do
     session.destroy
     redirect :"/login"
   end
 
-  delete "/users/:id" do
-    redirect "/login" unless logged_in?
+  delete '/users/:id' do
+    redirect '/login' unless logged_in?
 
     @user = User.find_by(id: params[:id])
 
@@ -85,12 +86,12 @@ class UsersController < ApplicationController
       if @user.id == current_user.id
         session.destroy
         @user.destroy
-        redirect "/"
+        redirect '/'
       else
-        "You cannot delete other users"
+        'You cannot delete other users'
       end
     else
-      "404: User not found"
+      '404: User not found'
     end
   end
 end

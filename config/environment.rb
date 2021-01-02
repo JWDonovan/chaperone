@@ -1,6 +1,8 @@
-ENV["SINATRA_ENV"] ||= "development"
+# frozen_string_literal: true
 
-require "bundler/setup"
-Bundler.require(:default, ENV["SINATRA_ENV"])
+ENV['SINATRA_ENV'] ||= 'development'
 
-require_all "app"
+require 'bundler/setup'
+Bundler.require(:default, ENV['SINATRA_ENV'])
+
+require_all 'app'

@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class ApplicationController < Sinatra::Base
   configure do
-    set :views, "app/views"
+    set :views, 'app/views'
     enable :sessions
-    set :session_secret, "super_secret"
+    set :session_secret, 'super_secret'
   end
 
-  get "/" do
-    "Hello, world!"
+  get '/' do
+    'Hello, world!'
   end
 
   helpers do

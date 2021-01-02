@@ -1,17 +1,19 @@
-ENV["SINATRA_ENV"] = "test"
+# frozen_string_literal: true
 
-require "simplecov"
+ENV['SINATRA_ENV'] = 'test'
+
+require 'simplecov'
 SimpleCov.start
 
-require_relative "../config/environment"
+require_relative '../config/environment'
 
-require "capybara/rspec"
-require "capybara/dsl"
+require 'capybara/rspec'
+require 'capybara/dsl'
 
 ActiveRecord::Base.logger = nil
 
 if ActiveRecord::Base.connection.migration_context.needs_migration?
-  raise "Migrations are pending. Run `rake db:migrate SINATRA_ENV=test` to resolve the issue."
+  raise 'Migrations are pending. Run `rake db:migrate SINATRA_ENV=test` to resolve the issue.'
 end
 
 RSpec.configure do |config|
@@ -29,7 +31,7 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  config.order = "default"
+  config.order = 'default'
 end
 
 def app
