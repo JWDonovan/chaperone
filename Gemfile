@@ -11,6 +11,7 @@ gem "bcrypt", "~> 3.1", ">= 3.1.16"
 group :development do
   gem "rake", "~> 13.0", ">= 13.0.3"
   gem "tux", "~> 0.3.0"
+  gem "rubocop", "~> 1.7"
 end
 
 group :test do
