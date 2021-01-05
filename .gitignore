@@ -1,2 +1,4 @@
 *.sqlite
 coverage/
+tmp/
+public/uploads/
