@@ -2,3 +2,5 @@
 coverage/
 tmp/
 public/uploads/
+node_modules/
+.cache/
