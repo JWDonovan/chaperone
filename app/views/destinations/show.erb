@@ -1,6 +1,55 @@
-<%= @destination.id %>
-<%= @destination.location %>
-<img alt="Image" src="<%= @destination.image.url %>">
-<%= @destination.caption %>
-<%= @destination.description %>
-<%= @destination.map_embed_src %>
+<style>
+  @import url("https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css");
+  @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css");
+
+  .travel-destination {
+    max-width: 55rem;
+    padding: 4rem;
+  }
+
+  .hr {
+    border: 0;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .description {
+    margin-top: 4rem;
+  }
+
+  .map {
+    border: 0;
+    margin-top: 2rem;
+    min-height: 40vh;
+    width: 100%;
+  }
+</style>
+
+<div class="container is-max-desktop travel-destination">
+  <a class="travel-destination-name title" href="/destinations/<%= @destination.id %>"><%= @destination.location %></a>
+
+  <figure class="cover-image mt-4">
+    <img alt="Destination Image" class="cover-image-img" src="<%= @destination.image.url %>">
+    <figcaption class="cover-image-caption has-text-centered is-italic has-text-weight-light"><%= @destination.caption %></figcaption>
+  </figure>
+
+  <div class="container has-text-centered my-4">
+    <a class="button is-primary is-light" href="https://google.com/travel/flights/?q=Interlaken" target="_blank">
+      <span class="icon">
+        <i class="fas fa-plane"></i>
+      </span>
+      <span>Flights</span>
+    </a>
+    <a class="button is-link is-light" href="https://google.com/maps/place/Interlaken,+Switzerland" target="_blank">
+      <span class="icon">
+        <i class="fas fa-map-marker-alt"></i>
+      </span>
+      <span>Map</span>
+    </a>
+  </div>
+
+  <hr class="hr">
+
+  <div class="content description"><%= @destination.description %></div>
+
+  <iframe class="map" src="<%= @destination.map_embed_src %>"></iframe>
+</div>
