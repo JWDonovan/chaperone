@@ -72,7 +72,7 @@ class UsersController < ApplicationController
     if @user.save
       erb :"users/show"
     else
-      redirect "/users/#{ @user.id }/edit"
+      redirect "/users/#{@user.id}/edit"
     end
   end
 

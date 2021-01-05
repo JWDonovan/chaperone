@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DestinationsController < ApplicationController
   # new
   get '/destinations/new' do
@@ -13,7 +15,7 @@ class DestinationsController < ApplicationController
     destination.user_id = current_user.id
 
     if destination.save
-      redirect "/destinations/#{ destination.id }"
+      redirect "/destinations/#{destination.id}"
     else
       redirect '/destinations/new'
     end
@@ -62,7 +64,7 @@ class DestinationsController < ApplicationController
     if @destination.save
       erb :"destination/show"
     else
-      redirect "/destinations/#{ @destination.id }/edit"
+      redirect "/destinations/#{@destination.id}/edit"
     end
   end
 

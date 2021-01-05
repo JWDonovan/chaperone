@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateDestinations < ActiveRecord::Migration[6.1]
   def change
     create_table :destinations do |t|
@@ -7,7 +9,7 @@ class CreateDestinations < ActiveRecord::Migration[6.1]
       t.text :description, null: false
       t.string :map_embed_src
       t.integer :user_id, null: false
-    
+
       t.timestamps null: false
     end
 
