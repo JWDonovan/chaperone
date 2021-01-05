@@ -1,35 +1,9 @@
-<style>
-  @import url("https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css");
-  @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css");
+<div class="container is-max-desktop is-max-destination">
+  <a class="title" href="/destinations/<%= @destination.id %>"><%= @destination.location %></a>
 
-  .travel-destination {
-    max-width: 55rem;
-    padding: 4rem;
-  }
-
-  .hr {
-    border: 0;
-    border-bottom: 1px solid #ccc;
-  }
-
-  .description {
-    margin-top: 4rem;
-  }
-
-  .map {
-    border: 0;
-    margin-top: 2rem;
-    min-height: 40vh;
-    width: 100%;
-  }
-</style>
-
-<div class="container is-max-desktop travel-destination">
-  <a class="travel-destination-name title" href="/destinations/<%= @destination.id %>"><%= @destination.location %></a>
-
-  <figure class="cover-image mt-4">
-    <img alt="Destination Image" class="cover-image-img" src="<%= @destination.image.url %>">
-    <figcaption class="cover-image-caption has-text-centered is-italic has-text-weight-light"><%= @destination.caption %></figcaption>
+  <figure class="image mt-4">
+    <img alt="Destination Image" src="<%= @destination.image.url %>">
+    <figcaption class="has-text-centered is-italic has-text-weight-light"><%= @destination.caption %></figcaption>
   </figure>
 
   <div class="container has-text-centered my-4">
