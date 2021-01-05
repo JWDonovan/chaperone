@@ -1,5 +1,12 @@
 AllCops:
   NewCops: enable
 
+Bundler/OrderedGems:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
+
+Style/NumericLiterals:
+  Exclude:
+    - db/schema.rb
