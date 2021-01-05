@@ -1,0 +1,84 @@
+<style>
+  @import url("https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css");
+  @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css");
+  @import url("https://cdn.quilljs.com/1.3.6/quill.snow.css");
+
+  .is-max-travel-destination {
+    max-width: 55rem;
+    padding: 4rem;
+  }
+
+  .travel-destination-description {
+    min-height: 40vh;
+  }
+
+  .ql-editor,
+  .ql-container {
+    height: auto;
+  }
+</style>
+
+<form action="/destinations/create" class="container is-max-desktop is-max-travel-destination" enctype="multipart/form-data" id="new-destination-form" method="post">
+  <h1 class="title">New Destination</h1>
+
+  <input class="input mb-4" name="location" placeholder="Paris, France" required type="text">
+
+  <div class="file has-name is-fullwidth mb-4">
+    <label class="file-label">
+      <input class="file-input" id="image" name="image" type="file">
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fas fa-upload"></i>
+        </span>
+        <span class="file-label">Choose a cover image...</span>
+      </span>
+      <span class="file-name" id="image-name"></span>
+    </label>
+  </div>
+
+  <input class="input mb-4" name="caption" placeholder="image caption" type="text">
+
+  <input id="description" name="description" type="hidden">
+  <div class="mb-4 travel-destination-description" id="quill-editor"></div>
+
+  <input class="input mb-4" name="map_embed_src" placeholder="map embed src" type="url">
+
+  <div class="is-grouped has-text-right">
+    <a class="button is-danger is-outlined" href="/destinations">
+      <span>Discard</span>
+      <span class="icon is-small">
+        <i class="fas fa-times"></i>
+      </span>
+    </a>
+    <button class="button is-success" type="submit">
+      <span>Save</span>
+      <span class="icon is-small">
+        <i class="fas fa-check"></i>
+      </span>
+    </button>
+  </div>
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.min.js"></script>
+<script>
+  "use strict";
+
+  const quillEditor = new Quill("#quill-editor", {
+    placeholder: "Write a short description here...",
+    theme: "snow"
+  });
+
+  const fileInput = document.getElementById("image");
+  fileInput.addEventListener("change", function () {
+    if (fileInput.files.length > 0) {
+      const fileName = document.getElementById("image-name");
+      fileName.innerHTML = fileInput.files[0].name;
+    }
+  });
+
+  const newDestinationForm = document.getElementById("new-destination-form");
+  newDestinationForm.addEventListener("submit", function() {
+    const description = document.getElementById("description");
+    description.value = quillEditor.root.innerHTML;
+  });
+</script>
