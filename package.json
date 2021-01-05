@@ -1,0 +1,24 @@
+{
+  "name": "chaperone",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "css-build": "parcel build app/scss/style.scss --out-dir public/css",
+    "css-watch": "parcel app/scss/style.scss --out-dir public/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JWDonovan/chaperone.git"
+  },
+  "author": "James Donovan <jameswilliamdonovan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JWDonovan/chaperone/issues"
+  },
+  "homepage": "https://github.com/JWDonovan/chaperone#readme",
+  "devDependencies": {
+    "bulma": "^0.9.1",
+    "sass": "^1.32.0"
+  }
+}
