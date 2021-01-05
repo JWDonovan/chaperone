@@ -62,13 +62,17 @@ class UsersController < ApplicationController
   patch '/users/:id' do
     @user = User.find_by(id: params[:id])
 
-    @user&.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email],
-                  password: params[:password])
+    @user.update(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      email: params[:email],
+      password: params[:password]
+    )
 
     if @user.save
       erb :"users/show"
     else
-      redirect "/users/#{@user.id}/edit"
+      redirect "/users/#{ @user.id }/edit"
     end
   end
 
