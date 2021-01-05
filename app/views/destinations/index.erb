@@ -1,0 +1,10 @@
+<h1>Destinations</h1>
+<% @destinations.each do |destination|%>
+<%= destination.id %>
+<%= destination.location %>
+<img alt="Destination Image" src="<%= destination.image.url %>">
+<%= destination.caption %>
+<%= destination.description %>
+<%= destination.map_embed_src %>
+<br>
+<% end %>
