@@ -9,6 +9,7 @@ gem 'shotgun', '~> 0.9.2'
 gem 'sinatra', '~> 2.1'
 gem 'sinatra-activerecord', '~> 2.0', '>= 2.0.21', require: 'sinatra/activerecord'
 gem 'sqlite3', '~> 1.4', '>= 1.4.2'
+gem 'carrierwave', '~> 2.1', require: ['carrierwave', 'carrierwave/orm/activerecord']
 
 group :development do
   gem 'rake', '~> 13.0', '>= 13.0.3'
