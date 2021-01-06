@@ -1,0 +1,26 @@
+<nav aria-label="main navigation" class="navbar" role="navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img alt="logo" src="https://bulma.io/images/bulma-logo.png">
+    </a>
+    <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" id="navbar-burger" roles="button">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="navbar-menu" id="mobile-navbar">
+    <div class="navbar-start">
+      <a class="navbar-item" href="/destinations">Destinations</a>
+      <a class="navbar-item" href="/latest">Latest</a>
+      <% if logged_in? %>
+        <a class="navbar-item" href="/destinations/new">New Destination</a>
+      <% end %>
+    </div>
+
+    <div class="navbar-end">
+      <%= logged_in? ? (erb :"layouts/_navigation_logged_in") : (erb :"layouts/_navigation_logged_out") %>
+    </div>
+  </div>
+</nav>
