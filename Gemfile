@@ -12,6 +12,7 @@ gem 'sinatra', '~> 2.1'
 gem 'sinatra-activerecord', '~> 2.0', '>= 2.0.21', require: 'sinatra/activerecord'
 gem 'pg', '~> 1.2', '>= 1.2.3'
 gem 'carrierwave', '~> 2.1', require: ['carrierwave', 'carrierwave/orm/activerecord']
+gem 'sinatra-flash', '~> 0.3.0'
 
 group :development do
   gem 'rake', '~> 13.0', '>= 13.0.3'
