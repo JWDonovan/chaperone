@@ -1,3 +1,75 @@
-<%= @user.email %>
-<%= @user.first_name %>
-<%= @user.last_name %>
+<div class="container is-max-desktop is-max-destination">
+  <h1 class="title">Profile</h1>
+  <p>Name: <%= @user.first_name %> <%= @user.last_name %></p>
+  <p>Email: <a href="mailto:<%= @user.email %>"><%= @user.email %></a></p>
+
+  <% if logged_in? && current_user.id == @user.id %>
+    <div class="buttons mt-6 is-centered">
+      <a class="button is-link is-light" href="/users/<%= @user.id %>/edit">
+        <span>Edit Profile</span>
+        <span class="icon">
+          <i class="fas fa-sliders-h"></i>
+        </span>
+      </a>
+      <a class="button is-success is-light" href="/destinations/new">
+        <span>New Destination</span>
+        <span class="icon">
+          <i class="fas fa-plus-circle"></i>
+        </span>
+      </a>
+
+      <form action="/users/<%= @user.id %>" method="post">
+        <input name="_method" type="hidden" value="delete">
+        <button class="button is-danger is-light" type="submit">
+          <span>Delete Account</span>
+          <span class="icon is-small">
+            <i class="fas fa-trash"></i>
+          </span>
+        </button>
+      </form>
+    </div>
+  <% end %>
+
+  <hr class="my-6" style="border-bottom: 1px solid #ccc;">
+
+  <h1 class="title">Destinations</h1>
+  
+  <% @destinations.each do |destination|%>
+    <a class="has-text-black mb-6" href="/destinations/<%= destination.id %>">
+      <p class="is-size-4"><%= destination.location %></p>
+      
+      <p>Author: <a href="/users/<%= destination.user_id %>"><%= destination.user.first_name %> <%= destination.user.last_name %></a></p>
+
+      <% if logged_in? && current_user.id == destination.user_id %>
+        <div class="buttons mt-2 is-centered">
+          <a class="button is-link is-light" href="/destinations/<%= destination.id %>/edit">
+            <span>Edit</span>
+            <span class="icon">
+              <i class="fas fa-sliders-h"></i>
+            </span>
+          </a>
+
+          <form action="/destinations/<%= destination.id %>" method="post">
+            <input name="_method" type="hidden" value="delete">
+            <button class="button is-danger is-light" type="submit">
+              <span>Delete</span>
+              <span class="icon is-small">
+                <i class="fas fa-trash"></i>
+              </span>
+            </button>
+          </form>
+        </div>
+      <% end %>
+
+      <figure class="image my-4">
+        <img alt="Destination image" src="<%= destination.image.url %>">
+        <figcaption class="has-text-centered is-italic has-text-weight-light"><%= destination.caption %></figcaption>
+      </figure>
+
+      <div class="content" style="max-height: 10em; text-overflow: ellipsis; overflow: hidden;"><%= destination.description %></div>
+
+      <hr style="border-bottom: 1px solid #ccc;">
+    </a>
+  <% end %>
+</div>
+</div>
