@@ -7,13 +7,13 @@
   </figure>
 
   <div class="container has-text-centered my-4">
-    <a class="button is-primary is-light" href="https://google.com/travel/flights/?q=Interlaken" target="_blank">
+    <a class="button is-primary is-light" href="https://google.com/travel/flights/?q=<%= URI.encode_www_form_component(@destination.location) %>" target="_blank">
       <span class="icon">
         <i class="fas fa-plane"></i>
       </span>
       <span>Flights</span>
     </a>
-    <a class="button is-link is-light" href="https://google.com/maps/place/Interlaken,+Switzerland" target="_blank">
+    <a class="button is-link is-light" href="https://google.com/maps/place/<%= URI.encode_www_form_component(@destination.location) %>" target="_blank">
       <span class="icon">
         <i class="fas fa-map-marker-alt"></i>
       </span>
