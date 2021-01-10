@@ -2,6 +2,8 @@
 
 source 'https://rubygems.org'
 
+ruby '2.7.2'
+
 gem 'activerecord', '~> 6.1', require: 'active_record'
 gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 gem 'require_all', '~> 3.0'
