@@ -124,10 +124,10 @@ class UsersController < ApplicationController
     if @user
       if @user.id == current_user.id
         @user.destinations.destroy_all
-        
+
         session.destroy
         @user.destroy
-        
+
         redirect '/'
       else
         'You cannot delete other users'

@@ -23,7 +23,7 @@ Destination.create(
   image: File.open('/home/james/src/chaperone/app/images/strasbourg.jpg'),
   caption: 'Chan Lee // Unsplash',
   description: description,
-  map_embed_src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d84483.91435636113!2d7.692054992846816!3d48.5692059045779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c8495e18b2c1%3A0x971a483118e7241f!2sStrasbourg%2C%20France!5e0!3m2!1sen!2sus!4v1610080028003!5m2!1sen!2sus",
+  map_embed_src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d84483.91435636113!2d7.692054992846816!3d48.5692059045779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c8495e18b2c1%3A0x971a483118e7241f!2sStrasbourg%2C%20France!5e0!3m2!1sen!2sus!4v1610080028003!5m2!1sen!2sus',
   user_id: user.id
 )
 
@@ -32,6 +32,6 @@ Destination.create(
   image: File.open('/home/james/src/chaperone/app/images/florence.jpg'),
   caption: 'Nick Fewings // Unsplash',
   description: description,
-  map_embed_src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46090.483966750624!2d11.205948652076097!3d43.78001477437566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a56a680d2d6ad%3A0x93d57917efc72a03!2sFlorence%2C%20Metropolitan%20City%20of%20Florence%2C%20Italy!5e0!3m2!1sen!2sus!4v1610081176748!5m2!1sen!2sus",
+  map_embed_src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46090.483966750624!2d11.205948652076097!3d43.78001477437566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a56a680d2d6ad%3A0x93d57917efc72a03!2sFlorence%2C%20Metropolitan%20City%20of%20Florence%2C%20Italy!5e0!3m2!1sen!2sus!4v1610081176748!5m2!1sen!2sus',
   user_id: user.id
 )
