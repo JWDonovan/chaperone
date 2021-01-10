@@ -1,10 +1,20 @@
-<h1>Destinations</h1>
-<% @destinations.each do |destination|%>
-<%= destination.id %>
-<%= destination.location %>
-<img alt="Destination Image" src="<%= destination.image.url %>">
-<%= destination.caption %>
-<%= destination.description %>
-<%= destination.map_embed_src %>
-<br>
-<% end %>
+<div class="container is-max-desktop is-max-destination">
+  <h1 class="title">Destinations</h1>
+  
+  <% @destinations.each do |destination|%>
+    <a class="has-text-black mb-6" href="/destinations/<%= destination.id %>">
+      <p class="is-size-4"><%= destination.location %></p>
+      
+      <p>Author: <a href="/users/<%= destination.user_id %>"><%= destination.user.first_name %> <%= destination.user.last_name %></a></p>
+
+      <figure class="image my-4">
+        <img alt="Destination image" src="<%= destination.image.url %>">
+        <figcaption class="has-text-centered is-italic has-text-weight-light"><%= destination.caption %></figcaption>
+      </figure>
+
+      <div class="content" style="max-height: 10em; text-overflow: ellipsis; overflow: hidden;"><%= destination.description %></div>
+
+      <hr style="border-bottom: 1px solid #ccc;">
+    </a>
+  <% end %>
+</div>
