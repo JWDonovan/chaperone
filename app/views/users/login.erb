@@ -1,6 +1,26 @@
-<form action="/login" method="post">
-  <input name="email" placeholder="email" required type="email">
-  <input name="password" placeholder="password" required type="password">
-  
-  <input type="submit" value="LOGIN">
-</form>
+<div class="hero is-fullheight is-primary">
+  <div class="hero-body">
+    <div class="container is-max-desktop" style="max-width: 500px">
+      <form action="/login" class="card py-6 px-6 mb-4"" method="post">
+        <h1 class="title has-text-dark mb-6">Log in</h1>
+
+        <input autofocus class="input mb-4" name="email" placeholder="email" required type="email">
+        <input class="input mb-4" name="password" placeholder="password" required type="password">
+
+        <button class="button is-success mr-2" type="submit">
+          <span>Log in</span>
+          <span class="icon">
+            <i class="fas fa-sign-in-alt"></i>
+          </span>
+        </button>
+
+        <a class="button is-light" href="/signup">
+          <span>Sign up</span>
+          <span class="icon">
+            <i class="fas fa-user-plus"></i>
+          </span>
+        </a>
+      </form>
+    </div>
+  </div>
+</div>
