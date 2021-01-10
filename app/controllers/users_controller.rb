@@ -38,7 +38,8 @@ class UsersController < ApplicationController
         redirect '/signup'
       end
     else
-      'Passwords do not match'
+      flash[:warning] = 'Passwords do not match.'
+      redirect '/signup'
     end
   end
 
