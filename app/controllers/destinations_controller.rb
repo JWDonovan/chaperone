@@ -7,6 +7,12 @@ class DestinationsController < ApplicationController
     erb :"destinations/new"
   end
 
+  # latest
+  get '/destinations/latest' do
+    destination = Destination.last
+    redirect "/destinations/#{destination.id}"
+  end
+
   # create
   post '/destinations/create' do
     redirect '/login' unless logged_in?
