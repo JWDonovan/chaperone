@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   get '/login' do
     redirect "/users/#{current_user.id}" if logged_in?
-    erb :"users/login"
+    erb :'users/login', layout: :'users/layout'
   end
 
   post '/login' do
@@ -13,23 +13,32 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect :"/users/#{@user.id}"
     else
-      redirect :"/login"
+      redirect :'/login'
     end
   end
 
   get '/signup' do
     redirect "/users/#{current_user.id}" if logged_in?
-    erb :"users/new"
+    erb :'users/new', layout: :'users/layout'
   end
 
   post '/signup' do
-    user = User.new(params)
+    if params[:password] == params[:verify_password]
+      user = User.new(
+        email: params[:email],
+        first_name: params[:first_name],
+        last_name: params[:last_name],
+        password: params[:password]
+      )
 
-    if user.save
-      session[:user_id] = user.id
-      redirect "/users/#{user.id}"
+      if user.save
+        session[:user_id] = user.id
+        redirect "/users/#{user.id}"
+      else
+        redirect '/signup'
+      end
     else
-      redirect '/signup'
+      'Passwords do not match'
     end
   end
 
@@ -37,7 +46,9 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
 
     if @user
-      erb :"users/show"
+      @destinations = @user.destinations
+
+      erb :'users/show'
     else
       '404: User not found'
     end
@@ -50,7 +61,31 @@ class UsersController < ApplicationController
 
     if @user
       if @user.id == current_user.id
-        erb :"users/edit"
+        erb :'users/edit'
+      else
+        'You cannot edit other users'
+      end
+    else
+      '404: User not found'
+    end
+  end
+
+  patch '/users/:id/change_password' do
+    @user = User.find_by(id: params[:id])
+
+    if @user
+      if @user.id == current_user.id
+        if params[:new_password] == params[:verify_password]
+          @user.update(password: params[:new_password])
+
+          if @user.save
+            erb :'users/show'
+          else
+            redirect "/users/#{@user.id}/edit"
+          end
+        else
+          'Passwords do not match'
+        end
       else
         'You cannot edit other users'
       end
@@ -70,7 +105,7 @@ class UsersController < ApplicationController
     )
 
     if @user.save
-      erb :"users/show"
+      erb :'users/show'
     else
       redirect "/users/#{@user.id}/edit"
     end
@@ -78,7 +113,7 @@ class UsersController < ApplicationController
 
   get '/logout' do
     session.destroy
-    redirect :"/login"
+    redirect :'/login'
   end
 
   delete '/users/:id' do
@@ -88,8 +123,11 @@ class UsersController < ApplicationController
 
     if @user
       if @user.id == current_user.id
+        @user.destinations.destroy_all
+        
         session.destroy
         @user.destroy
+        
         redirect '/'
       else
         'You cannot delete other users'
