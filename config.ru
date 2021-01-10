@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'active_record'
 require './environment'
 
 if ActiveRecord::Base.connection.migration_context.needs_migration?
