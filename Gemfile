@@ -8,7 +8,7 @@ gem 'require_all', '~> 3.0'
 gem 'shotgun', '~> 0.9.2'
 gem 'sinatra', '~> 2.1'
 gem 'sinatra-activerecord', '~> 2.0', '>= 2.0.21', require: 'sinatra/activerecord'
-gem 'sqlite3', '~> 1.4', '>= 1.4.2'
+gem 'pg', '~> 1.2', '>= 1.2.3'
 gem 'carrierwave', '~> 2.1', require: ['carrierwave', 'carrierwave/orm/activerecord']
 
 group :development do

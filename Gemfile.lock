@@ -54,6 +54,7 @@ GEM
     parallel (1.20.1)
     parser (3.0.0.0)
       ast (~> 2.4.1)
+    pg (1.2.3)
     public_suffix (4.0.6)
     rack (2.2.3)
     rack-protection (2.1.0)
@@ -117,7 +118,6 @@ GEM
     sinatra-activerecord (2.0.21)
       activerecord (>= 4.1)
       sinatra (>= 1.0)
-    sqlite3 (1.4.2)
     tilt (2.0.10)
     tux (0.3.0)
       ripl (>= 0.3.5)
@@ -140,6 +140,7 @@ DEPENDENCIES
   capybara (~> 3.34)
   carrierwave (~> 2.1)
   database_cleaner (~> 1.8, >= 1.8.5)
+  pg (~> 1.2, >= 1.2.3)
   rake (~> 13.0, >= 13.0.3)
   require_all (~> 3.0)
   rspec (~> 3.10)
@@ -148,7 +149,6 @@ DEPENDENCIES
   simplecov (~> 0.20.0)
   sinatra (~> 2.1)
   sinatra-activerecord (~> 2.0, >= 2.0.21)
-  sqlite3 (~> 1.4, >= 1.4.2)
   tux (~> 0.3.0)
 
 BUNDLED WITH
