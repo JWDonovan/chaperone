@@ -8,7 +8,7 @@ Take a look at Chaperone for inspiration when planning your next vacation!
 
 ## Installation
 
-Prerequisites: `ruby`, `gem`, and `bundle` must be installed
+Prerequisites: `ruby`, `gem`, `bundle`, and `postgresql` must be installed
 
 Clone the GitHub repository:
 
@@ -24,7 +24,9 @@ $ bundle install
 
 ## Usage
 
-To get a local version of the project working, first setup a local database:
+To get a local version of the project working, you must first setup a local database.
+Chaperone uses Postgresql, so this must be installed and running in order to proceed.
+Make sure your user has proper permissions to access the Postgres databases.
 
 ```bash
 $ rake db:setup
